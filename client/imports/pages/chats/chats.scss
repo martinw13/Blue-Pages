@@ -1,0 +1,55 @@
+.chats-page-content {
+  .chat-picture {
+    border-radius: 50%;
+    width: 50px;
+    float: left;
+    margin-left: 70px;
+    position: absolute;
+  }
+
+  .favorites-style-count{
+    
+    float:left;
+    position: absolute;
+    margin: 18px 20px 0 0px;
+  }
+
+  .favorites-style-button{
+    float: left;
+    position: absolute;
+    margin: 10px 0 0 30px;
+  }
+
+  .add-event-button{
+    position: absolute;
+    top: 10px;
+    right: 34px;
+  }
+
+  .location-search-bar{
+    position: absolute;
+    top: 8px;
+    right: 80px;
+    left: 200px;
+    bottom: 10px;
+  }
+
+  .search-bar-skinny {
+  @extend .searchbar-md;
+  padding-bottom: 6px;
+}
+ 
+  .chat-info {
+    float: left;
+    margin: 10px 0 0 140px;
+
+ 
+    .last-message-timestamp {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 14px;
+      color: #9A9898;
+    }
+  }
+}
