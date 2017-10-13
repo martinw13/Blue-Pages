@@ -22,7 +22,7 @@
 
   .add-event-button{
     position: absolute;
-    top: 10px;
+    top: 15px;
     right: 34px;
   }
 
@@ -31,12 +31,14 @@
     top: 8px;
     right: 80px;
     left: 200px;
-    bottom: 10px;
+  }
+
+  .header-margin{
+    margin-top: 20px;
   }
 
   .search-bar-skinny {
-  @extend .searchbar-md;
-  padding-bottom: 6px;
+  padding-bottom: 6px !important;
 }
  
   .chat-info {
