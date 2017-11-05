@@ -33,6 +33,7 @@
     left: 200px;
   }
 
+
   .header-margin{
     margin-top: 20px;
   }
@@ -55,3 +56,15 @@
     }
   }
 }
+
+.login-style .content-container{
+  padding: 20px 12px !important;
+  position: relative !important;
+  margin-top: 0px !important;
+  height: inherit !important;
+  margin-right: inherit !important;
+}
+
+.my-events-button{
+    margin-right: 20px;
+  }

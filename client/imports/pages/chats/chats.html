@@ -7,9 +7,10 @@
       <button ion-button icon-only class="my-events-button" title="My Events">
         <ion-icon name="person"></ion-icon>
       </button>
-      <button ion-button icon-only class="options-button" title="Log in">
+      <!-- <button ion-button (click)="openLogin()" icon-only class="options-button" title="Log in" >
         <ion-icon name="more"></ion-icon>
-      </button>
+      </button> -->
+      <login-buttons class="login-style"></login-buttons>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -29,7 +30,7 @@
 		<ion-card-content>
 		  <ion-list class="chats">
 		    <ion-item-sliding *ngFor="let chat of chats | async">
-		      <button ion-item class="chat">
+		      <button ion-item class="chat" (click)="showMessages(chat)">
 		      	<div class="favorites-style-count">
 		      		<span *ngIf="chat.favorites">
 		      			<p class="last-message-content last-message-content-text" >{{chat.favorites}}</p>

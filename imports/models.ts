@@ -7,7 +7,7 @@ export interface Chat {
   title?: string;
   picture?: string;
   lastMessage?: Message;
-  favorites?: int;
+  favorites?: string;
 }
  
 export interface Message {
@@ -15,5 +15,6 @@ export interface Message {
   chatId?: string;
   content?: string;
   createdAt?: Date;
-  type?: MessageType
+  ownership?: string;
+  type?: MessageType;
 }
