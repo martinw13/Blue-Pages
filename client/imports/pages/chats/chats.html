@@ -13,49 +13,58 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
- 
+
 <ion-content class="chats-page-content">
-	<ion-card>
-		<ion-card-header>
-			List View
-			<div class="location-search-bar">
-				<ion-searchbar class="search-bar-skinny"></ion-searchbar>
-			</div>
-			<button ion-button icon-only class="add-event-button" title="Add Event">
-        		<ion-icon name="md-add"></ion-icon>
-      		</button>
-			<hr class="header-margin" />
-		</ion-card-header>
-		<ion-card-content>
-		  <ion-list class="chats">
-		    <ion-item-sliding *ngFor="let chat of chats | async">
-		      <button ion-item class="chat">
-		      	<div class="favorites-style-count">
-		      		<span *ngIf="chat.favorites">
-		      			<p class="last-message-content last-message-content-text" >{{chat.favorites}}</p>
-		      		</span>
-		      	</div>
-		      	<div class="favorites-style-button">
-		      		<button ion-button icon-only title="Favorite this event">
-        				<ion-icon name="md-star"></ion-icon>
-      				</button>
-		      	</div>
-		      	
-		        <img class="chat-picture" [src]="chat.picture">
-		        <div class="chat-info">
-		          <h2 class="chat-title">{{chat.title}}</h2>
-		 
-		          <span *ngIf="chat.lastMessage" class="last-message">
-		            <p *ngIf="chat.lastMessage.type == 'text'" class="last-message-content last-message-content-text">{{chat.lastMessage.content}}</p>
-		            <span class="last-message-timestamp">{{ chat.lastMessage.createdAt | amCalendar }}</span>
-		          </span>
-		        </div>
-		      </button>
-		      <ion-item-options class="chat-options">
-		        <button ion-button color="danger" class="option option-remove" (click)="removeChat(chat)">Remove</button>
-		      </ion-item-options>
-		    </ion-item-sliding>
-		  </ion-list>
-		</ion-card-content>
-	</ion-card>
+  <ion-card>
+    <ion-card-header>
+      List View
+      <div class="location-search-bar">
+	<ion-searchbar class="search-bar-skinny"></ion-searchbar>
+      </div>
+      <button ion-button icon-only class="add-event-button" title="Add Event">	
+        <ion-icon name="md-add"></ion-icon>
+      </button>
+      <hr class="header-margin" />
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list class="chats">
+	<ion-item-sliding *ngFor="let chat of chats | async">
+	  <button ion-item class="chat">
+	    <div class="favorites-style-count">
+	      <span *ngIf="chat.favorites">
+		<p class="last-message-content last-message-content-text" >{{chat.favorites}}</p>
+	      </span>
+	    </div>
+	    <div class="favorites-style-button">
+	      <button ion-button icon-only title="Favorite this event">
+        	<ion-icon name="md-star"></ion-icon>
+      	      </button>
+	    </div>
+
+	    
+	    <div *ngIf="chat.picture">
+	      <img class="chat-picture" [src]="chat.picture">
+	    </div>
+	    <div *ngIf="!chat.picture">
+	      <img class="chat-picture" src="https://imageog.flaticon.com/icons/png/512/36/36601.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF">
+	    </div>
+
+	    
+	    <div class="chat-info">
+	      <h2 class="chat-title">{{chat.title}}</h2>
+	      <p>{{chat.createdAt}} | Address: {{chat.address}}</p>
+	      <p class="last-message-contentl ast-message-content-text">{{chat.description}}</p>
+
+	      <span *ngIf="!chat.description">
+		<p class="last-message-content last-message-content-text">----</p>
+	      </span>
+	    </div>
+	  </button>
+	  <ion-item-options class="chat-options">
+	    <button ion-button color="danger" class="option option-remove" (click)="removeChat(chat)">Remove</button>
+	  </ion-item-options>
+	</ion-item-sliding>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

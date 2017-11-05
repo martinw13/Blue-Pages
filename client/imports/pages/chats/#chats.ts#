@@ -18,7 +18,23 @@ export class ChatsPage implements OnInit {
   ngOnInit() {
     this.chats = Chats.find({})
   }
+
+  addChart(): void {
+
+    chatId = Chats.collection.insert({
+      title: 'RRRR EEEEEE',
+      picture: 'https://randomuser.me/api/portraits/thumb/men/2.jpg'
+    });
  
+    Messages.collection.insert({
+      chatId: chatId,
+      content: 'Comedy Show | Tickets Available for Purchase | {location name} | {address}',
+      createdAt: Moment().subtract(2, 'weeks').toDate(),
+      type: MessageType.TEXT
+    });
+
+  } 
+
   removeChat(chat: Chat): void {
     Chats.remove({_id: chat._id}).subscribe(() => {});
   }

@@ -5,9 +5,14 @@ export enum MessageType {
 export interface Chat {
   _id?: string;
   title?: string;
+  description?: string;
   picture?: string;
-  lastMessage?: Message;
-  favorites?: int;
+  favorites?: number;
+  time?: Date;
+  address?: string;
+  createdAt?: Date;
+  minimumAge?: number;
+  url?: string;
 }
  
 export interface Message {
