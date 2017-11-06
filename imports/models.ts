@@ -2,19 +2,22 @@ export enum MessageType {
   TEXT = <any>'text'
 }
  
-export interface Chat {
+export interface Event {
   _id?: string;
   title?: string;
+  description?: string;
   picture?: string;
-  lastMessage?: Message;
-  favorites?: string;
+  favorites?: number;
+  time?: Date;
+  address?: string;
+  createdAt?: Date;
+  minimumAge?: number;
+  url?: string;
 }
  
-export interface Message {
+export interface UserEvent {
   _id?: string;
-  chatId?: string;
-  content?: string;
-  createdAt?: Date;
-  ownership?: string;
-  type?: MessageType;
+  userId?: string;
+  eventId?: string;
+  userEventStatus?: string;
 }

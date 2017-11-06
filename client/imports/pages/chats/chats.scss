@@ -45,7 +45,9 @@
   .chat-info {
     float: left;
     margin: 10px 0 0 140px;
-
+    width:100px;
+    word-wrap:break-word;
+    display:inline-block      
  
     .last-message-timestamp {
       position: absolute;
@@ -54,9 +56,9 @@
       font-size: 14px;
       color: #9A9898;
     }
+
   }
 }
-
 .login-style .content-container{
   padding: 20px 12px !important;
   position: relative !important;

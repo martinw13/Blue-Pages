@@ -3,7 +3,8 @@ import { MomentModule } from 'angular2-moment';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { ChatsPage } from '../pages/chats/chats';
-import { LoginModal } from '../pages/login/login';
+import { CreateEventModal } from '../pages/createEventModal/createEventModal';
+import { DetailsModal } from '../pages/detailsModal/detailsModal';
 import { BrowserModule } from '@angular/platform-browser';
 //import { Angular2SocialLoginModule } from "angular2-social-login";
 import { AccountsModule } from 'angular2-meteor-accounts-ui';
@@ -24,7 +25,8 @@ import { AccountsModule } from 'angular2-meteor-accounts-ui';
   declarations: [
     MyApp,
     ChatsPage,
-    LoginModal  
+    CreateEventModal,
+    DetailsModal  
   ],
   imports: [
     IonicModule.forRoot(MyApp), 
@@ -36,7 +38,8 @@ import { AccountsModule } from 'angular2-meteor-accounts-ui';
   entryComponents: [
     MyApp,
     ChatsPage,
-    LoginModal
+    CreateEventModal,
+    DetailsModal
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler }

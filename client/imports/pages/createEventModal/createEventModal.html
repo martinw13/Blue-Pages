@@ -1,0 +1,41 @@
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        <h1>Create an Event</h1>
+      </ion-title>
+      <ion-buttons start>
+        <button ion-button (click)="dismiss()">
+          <span ion-text color="primary" showWhen="ios">Cancel</span>
+          <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-note>
+             <form (ngSubmit)="createEvent()">
+                <ion-item>
+                  <ion-label>Event Title</ion-label>
+                  <ion-input type="text" [(ngModel)]="newEvent.title" name="title"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Address</ion-label>
+                  <ion-input type="text" [(ngModel)]="newEvent.address" name="address"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Description</ion-label>
+                  <ion-textarea [(ngModel)]="newEvent.description" name="description"></ion-textarea>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Picture</ion-label>
+                  <ion-input type="text" [(ngModel)]="newEvent.picture" name="picture"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Date</ion-label>
+                  <ion-input type="text" [(ngModel)]="newEvent.date" name="date"></ion-input>
+                </ion-item>
+                <button ion-button type="submit" block (click)="dismiss()">Create</button>
+            </form>
+    </ion-note>
+  </ion-content>
