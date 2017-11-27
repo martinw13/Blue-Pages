@@ -64,7 +64,7 @@ export class ListViewPage implements OnInit {
        this.events = Events.find({});
     }
     else{ // return the events with a substring that matches title
-       var regex = new RegExp(["^", title].join(""), "i");
+       var regex = new RegExp(["", title].join(""), "i");
        this.events = Events.find({"title": regex})
        //this.events = Events.find({"title": {$regex: title, $options:"$i"}});
     }
