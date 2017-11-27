@@ -17,7 +17,7 @@
 		<ion-card-header>
 			List View
 			<div class="location-search-bar">
-				<ion-searchbar class="search-bar-skinny"></ion-searchbar>
+				<ion-searchbar class="search-bar-skinny" (ionInput)="getItems($event)"></ion-searchbar>
 			</div>
 			<button *ngIf="hasCurrentUser()" ion-button icon-only class="add-event-button" title="Add Event" (click)="openCreateEvent()">
         		<ion-icon name="md-add"></ion-icon>

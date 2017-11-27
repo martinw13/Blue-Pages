@@ -38,9 +38,26 @@ export class ChatsPage implements OnInit {
     modal.present();
   }
 
-  ngOnInit() {
-    this.events = Events.find({});
-    this.userEvents = UserEvents.find({});
+  getItems(searchbar: any){
+    // set title to the value of the searchbar
+    var title = searchbar.srcElement.value;
+
+    // if the user hasn't typed anything, return all events
+    if (!title) {
+       this.events = Events.find({});
+    }
+    else{ // return the events with a substring that matches title
+       var regex = new RegExp(["^", title].join(""), "i");
+       this.events = Events.find({"title": regex})
+       //this.events = Events.find({"title": {$regex: title, $options:"$i"}});
+    }
+       this.userEvents = UserEvents.find({});
+ }
+
+
+  ngOnInit(searchbar: any) {
+       this.events = Events.find({});
+       this.userEvents = UserEvents.find({});
   }
 
   removeChat(event: Event): void {
