@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-navbar color="bluepages">
+    <ion-title>
+      The Blue Pages
+    </ion-title>
+    <ion-buttons end>
+      <login-buttons class="login-style"></login-buttons>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="chats-page-content">
+	<ion-card>
+		<ion-card-header>
+			Map View
+			<div class="location-search-bar">
+				<ion-searchbar class="search-bar-skinny" placeholder="Search for an event." (ionInput)="getItems($event)"></ion-searchbar>
+			</div>
+			<button *ngIf="hasCurrentUser()" ion-button icon-only class="add-event-button" title="Add Event" (click)="openCreateEvent()">
+        		<ion-icon name="md-add"></ion-icon>
+      		</button>
+			<hr class="header-margin" />
+		</ion-card-header>
+		<ion-card-content>
+			<ion-list *ngIf="isSearching" class="chats">
+		    <ion-item-sliding *ngFor="let event of events | async">
+		      <button ion-item class="chat" (click)="openDetails(event._id)">
+		      	<div class="favorites-style-count">
+		      		<span>
+		      			<p class="last-message-content last-message-content-text" >{{event.favorites}}</p>
+		      		</span>
+		      	</div>
+		      	<div class="favorites-style-button">
+		      		<button ion-button icon-only title="Favorite this event">
+        				<ion-icon name="md-star"></ion-icon>
+      				</button>
+		      	</div>
+		      	
+		        <img class="chat-picture" [src]="event.picture">
+		        <div class="chat-info">
+		          <h2 class="chat-title">{{event.title}}</h2>
+		 
+		          <span class="last-message">
+		            <p class="last-message-content last-message-content-text">{{event.description}}</p>
+		            <span class="last-message-content last-message-content-text">{{ event.createdAt | amCalendar }}</span>
+		          </span>
+		        </div>
+		      </button>
+		    </ion-item-sliding>
+		  </ion-list>
+		  <hr *ngIf="isSearching" class="header-margin" />
+		  <div class="container">
+		      <div class="form-group">
+		        <input placeholder="Search for a location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control location-search" #search [formControl]="searchControl">
+		      </div>
+		      <sebm-google-map 
+			      [latitude]="latitude"
+			      [longitude]="longitude"
+			      [zoom]="zoom"
+			      [disableDefaultUI]="false"
+			      [zoomControl]="false">
+			    
+			      <sebm-google-map-marker 
+			          *ngFor="let m of markers"
+			          [latitude]="m.lat"
+			          [longitude]="m.lng"
+			          [label]="m.label"
+			          [markerDraggable]="m.draggable"
+			          (dragEnd)="markerDragEnd(m, $event)">
+			          
+			        <sebm-google-map-info-window>
+			          <h1>{{m.label}}</h1>
+			          <hr/>
+			          <ul>
+						  <li>{{m.date | amCalendar }}</li>
+						  <li>{{m.description}}</li>
+					  </ul>
+					  
+      				  <div class="marker-favorites">
+      				  <button *ngIf="!isFavorite(m.id) && hasCurrentUser()" ion-button icon-only title="Favorite this event" (click)="favoriteEvent(m.id)">
+                      	<ion-icon name="md-star"></ion-icon>
+                      </button>
+
+                      <button *ngIf="isFavorite(m.id) && hasCurrentUser()" ion-button icon-only title="Unfavorite this event" class="blur-button" (click)="removeFavorite(m.id)">
+                    	<ion-icon name="md-star"></ion-icon>
+                      </button>
+      				  {{m.favorites}}
+      				  </div>	 
+			        </sebm-google-map-info-window>
+			        
+			      </sebm-google-map-marker>
+
+			</sebm-google-map>
+		  </div>
+		</ion-card-content>
+	</ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="light">
+
+    <p><i>Created by: Martin Watkins, Hassan Alshehri, Andrew Zhang, Brendan Courson (2017)</i></p>
+
+  </ion-toolbar>
+</ion-footer>

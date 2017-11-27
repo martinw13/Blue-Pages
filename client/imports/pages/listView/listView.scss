@@ -1,0 +1,80 @@
+.chats-page-content {
+  .chat-picture {
+    border-radius: 50%;
+    width: 50px;
+    float: left;
+    margin-left: 70px;
+    position: absolute;
+  }
+
+  .favorites-style-count{
+    
+    float:left;
+    position: absolute;
+    margin: 18px 20px 0 0px;
+  }
+
+  .favorites-style-button{
+    float: left;
+    position: absolute;
+    margin: 10px 0 0 30px;
+  }
+
+  .add-event-button{
+    position: absolute;
+    top: 15px;
+    right: 34px;
+  }
+
+  .location-search-bar{
+    position: absolute;
+    top: 8px;
+    right: 80px;
+    left: 200px;
+  }
+
+
+  .header-margin{
+    margin-top: 20px;
+  }
+
+  .search-bar-skinny {
+  padding-bottom: 6px !important;
+}
+ 
+  .chat-info {
+    float: left;
+    margin: 10px 0 0 140px;
+    width:100px;
+    word-wrap:break-word;
+    display:inline-block      
+ 
+    .last-message-timestamp {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 14px;
+      color: #9A9898;
+    }
+
+  }
+}
+.login-style .content-container{
+  padding: 20px 12px !important;
+  position: relative !important;
+  margin-top: 0px !important;
+  height: inherit !important;
+  margin-right: inherit !important;
+}
+
+.my-events-button{
+    margin-right: 20px;
+  }
+
+.blur-button{
+  opacity: 0.2;
+}
+
+.map-view-hover{
+  cursor: pointer;
+}

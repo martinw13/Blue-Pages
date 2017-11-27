@@ -21,18 +21,61 @@ export class DetailsModal {
     params: NavParams
   ) {
     this.event = Events.findOne({_id: params.get('eventId') });
-    this.userEvent = UserEvents.findOne({eventId: params.get('eventId') , userEventStatus: "0"});
-    console.log(this.userEvent);
-    if(this.userEvent)
-    {
-      console.log(Meteor.users.findOne({_id: this.userEvent.userId}));
-      this.eventOwnerEmail = Meteor.users.findOne({_id: this.userEvent.userId}).emails[0].address;
-
-      console.log(this.eventOwnerEmail);
-    }
-    
+    this.userEvent = UserEvents.findOne({eventId: params.get('eventId') , userEventStatus: "0"});   
   }
 
+  //method to "favorite" an event from the detailed view modal
+  favoriteEvent(eventId: string){
+    let userEventId;
+    userEventId = UserEvents.collection.insert({
+      userId: Meteor.userId(),
+      eventId: eventId,
+      userEventStatus: "1"
+    });
+
+    Events.update(
+      {_id: eventId},
+      {$inc: {'favorites':1}}
+      );
+
+    this.dismiss();
+  }
+
+  //method to "unfavorite" an event from the detailed view modal
+  removeFavorite(_eventId: string): void {
+    let removeFavorite = UserEvents.findOne({userId:Meteor.userId(), eventId: _eventId , userEventStatus: "1"});
+    UserEvents.remove({_id: removeFavorite._id}).subscribe(() => {});
+    Events.update(
+      {_id: _eventId},
+      {$inc: {'favorites':-1}}
+      );
+    this.dismiss();
+  }
+
+  //method to determine whether or not the active user has already favorited the event
+  isFavorite(_eventId: string){
+    let tempUserEvent = UserEvents.findOne({userId:Meteor.userId(), eventId: _eventId , userEventStatus: "1"});
+    if(tempUserEvent != null)
+    {
+      return true;
+    }else
+    {
+      return false;
+    }
+  }
+
+  //method to determine whether there is a currently active user
+  hasCurrentUser() {
+    if(Meteor.user())
+    {
+      return true;
+    }else
+    {
+      return false;
+    }
+  }
+
+  //method required to dismiss the modal
   dismiss() {
     this.viewCtrl.dismiss();
   }

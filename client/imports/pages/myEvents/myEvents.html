@@ -4,9 +4,6 @@
       The Blue Pages
     </ion-title>
     <ion-buttons end>
-      <button *ngIf="hasCurrentUser()" ion-button icon-only class="my-events-button" title="My Events">
-        <ion-icon name="person"></ion-icon>
-      </button>
       <login-buttons class="login-style"></login-buttons>
     </ion-buttons>
   </ion-navbar>
@@ -15,10 +12,7 @@
 <ion-content class="chats-page-content">
 	<ion-card>
 		<ion-card-header>
-			List View
-			<div class="location-search-bar">
-				<ion-searchbar class="search-bar-skinny"></ion-searchbar>
-			</div>
+			<a>My Events</a>
 			<button *ngIf="hasCurrentUser()" ion-button icon-only class="add-event-button" title="Add Event" (click)="openCreateEvent()">
         		<ion-icon name="md-add"></ion-icon>
       		</button>
@@ -26,7 +20,7 @@
 		</ion-card-header>
 		<ion-card-content>
 		  <ion-list class="chats">
-		    <ion-item-sliding *ngFor="let event of events | async">
+		    <ion-item-sliding *ngFor="let event of myEvents">
 		      <button ion-item class="chat" (click)="openDetails(event._id)">
 		      	<div class="favorites-style-count">
 		      		<span>
@@ -56,4 +50,50 @@
 		  </ion-list>
 		</ion-card-content>
 	</ion-card>
+
+	<ion-card>
+		<ion-card-header>
+			<a>My Favorites</a>
+			<hr class="header-margin" />
+		</ion-card-header>
+		<ion-card-content>
+		  <ion-list class="chats">
+		    <ion-item-sliding *ngFor="let favorite of favorites">
+		      <button ion-item class="chat" (click)="openDetails(favorite._id)">
+		      	<div class="favorites-style-count">
+		      		<span>
+		      			<p class="last-message-content last-message-content-text" >{{favorite.favorites}}</p>
+		      		</span>
+		      	</div>
+		      	<div class="favorites-style-button">
+		      		<button ion-button icon-only title="Favorite this event">
+        				<ion-icon name="md-star"></ion-icon>
+      				</button>
+		      	</div>
+		      	
+		        <img class="chat-picture" [src]="favorite.picture">
+		        <div class="chat-info">
+		          <h2 class="chat-title">{{favorite.title}}</h2>
+		 
+		          <span class="last-message">
+		            <p class="last-message-content last-message-content-text">{{favorite.description}}</p>
+		            <span class="last-message-content last-message-content-text">{{ favorite.createdAt | amCalendar }}</span>
+		          </span>
+		        </div>
+		      </button>
+		      <ion-item-options class="chat-options">
+		        <button ion-button color="danger" class="option option-remove" (click)="removeFavorite(favorite._id)">Remove</button>
+		      </ion-item-options>
+		    </ion-item-sliding>
+		  </ion-list>
+		</ion-card-content>
+	</ion-card>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="light">
+
+    <p><i>Created by: Martin Watkins, Hassan Alshehri, Andrew Zhang, Brendan Courson (2017)</i></p>
+
+  </ion-toolbar>
+</ion-footer>

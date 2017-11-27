@@ -18,6 +18,7 @@ export class CreateEventModal {
     public viewCtrl: ViewController
   ) {}
 
+  //method that inserts an event into the collection
   createEvent(){
     let eventId;
     let userEventId;
@@ -28,16 +29,17 @@ export class CreateEventModal {
       favorites: 0,
       description: this.newEvent.description,
       picture: this.newEvent.picture,
-      createdAt: Moment(this.newEvent.date).valueOf()
+      createdAt: Moment(this.newEvent.date).valueOf(),
+      createdBy: Meteor.user().emails[0].address.toString()
     });
     userEventId = UserEvents.collection.insert({
       userId: Meteor.userId(),
       eventId: eventId,
       userEventStatus: "0"
     });
-    console.log(userEventId);
   }
 
+  //method required to close the modal
   dismiss() {
     this.viewCtrl.dismiss();
   }

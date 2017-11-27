@@ -6,4 +6,11 @@
 @import "imports/app/app";
  
 // Pages
-@import "imports/pages/chats/chats";
+@import "imports/pages/listView/listView";
+
+// Pages
+@import "imports/pages/mapView/mapView";
+
+//ionic
+@import
+"../../node_modules/ionic-angular/css/ionic.css";

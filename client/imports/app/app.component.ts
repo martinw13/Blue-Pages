@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-import { ChatsPage } from '../pages/chats/chats';
+import { ListViewPage } from '../pages/listView/listView';
 import template from "./app.html";
- 
+
+
+//the driving component for the entire application
 @Component({
   template
 })
 export class MyApp {
-  rootPage = ChatsPage;
+  rootPage = ListViewPage;
   
   constructor(platform: Platform) {
     platform.ready().then(() => {

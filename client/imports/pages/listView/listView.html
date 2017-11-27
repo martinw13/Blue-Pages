@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar color="bluepages">
+    <ion-title>
+      The Blue Pages
+    </ion-title>
+    <ion-buttons end>
+
+      <button *ngIf="hasCurrentUser()" ion-button icon-only class="my-events-button" title="My Events" (click)="openMyEvents()">
+        <ion-icon name="person"></ion-icon>
+      </button>
+      <login-buttons class="login-style"></login-buttons>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="chats-page-content">
+	<ion-card>
+		<ion-card-header>
+			<a class="map-view-hover" (click)="openMapView()">Map View</a>
+			<div class="location-search-bar">
+				<ion-searchbar placeholder="Search for an event." class="search-bar-skinny" (ionInput)="getItems($event)"></ion-searchbar>
+			</div>
+			<button *ngIf="hasCurrentUser()" ion-button icon-only class="add-event-button" title="Add Event" (click)="openCreateEvent()">
+        		<ion-icon name="md-add"></ion-icon>
+      		</button>
+			<hr class="header-margin" />
+		</ion-card-header>
+		<ion-card-content>
+		  <ion-list class="chats">
+		    <ion-item-sliding *ngFor="let event of events | async">
+		      <button ion-item class="chat" (click)="openDetails(event._id)">
+		      	<div class="favorites-style-count">
+		      		<span>
+		      			<p class="last-message-content last-message-content-text" >{{event.favorites}}</p>
+		      		</span>
+		      	</div>
+		      	<div class="favorites-style-button">
+		      		<button ion-button icon-only title="Favorite this event">
+        				<ion-icon name="md-star"></ion-icon>
+      				</button>
+		      	</div>
+		      	
+		        <img class="chat-picture" [src]="event.picture">
+		        <div class="chat-info">
+		          <h2 class="chat-title">{{event.title}}</h2>
+		 
+		          <span class="last-message">
+		            <p class="last-message-content last-message-content-text">{{event.description}}</p>
+		            <span class="last-message-content last-message-content-text">{{ event.createdAt | amCalendar }}</span>
+		          </span>
+		        </div>
+		      </button>
+		    </ion-item-sliding>
+		  </ion-list>
+		</ion-card-content>
+	</ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="light">
+
+    <p><i>Created by: Martin Watkins, Hassan Alshehri, Andrew Zhang, Brendan Courson (2017)</i></p>
+
+  </ion-toolbar>
+</ion-footer>

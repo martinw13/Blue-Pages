@@ -2,44 +2,48 @@ import { NgModule, ErrorHandler, OnDestroy } from '@angular/core';
 import { MomentModule } from 'angular2-moment';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { ChatsPage } from '../pages/chats/chats';
+import { ListViewPage } from '../pages/listView/listView';
 import { CreateEventModal } from '../pages/createEventModal/createEventModal';
 import { DetailsModal } from '../pages/detailsModal/detailsModal';
+import { MapViewPage } from '../pages/mapView/mapView';
+import { MyEventsPage } from '../pages/myEvents/myEvents';
 import { BrowserModule } from '@angular/platform-browser';
-//import { Angular2SocialLoginModule } from "angular2-social-login";
+import { AgmCoreModule } from 'angular2-google-maps/core';
 import { AccountsModule } from 'angular2-meteor-accounts-ui';
- 
-// let providers = {
-//     "google": {
-//       "clientId": "146328356202-ljskse68k8fhu4lunpqd9gp6aq5mv2a4.apps.googleusercontent.co",
-//       "clientSecret": "-r6oK9HFYUXHY82QDgb8tyhj"
-//     },
-//     "facebook": {
-//       "clientId": "1461069033986851",
-//       "apiVersion": "v2.10"
-//     }
-// };
+import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 
+//The main NgModule
+//Any new components, pages, modals, and packages must be included in this declaration
 @NgModule({
   declarations: [
     MyApp,
-    ChatsPage,
+    ListViewPage,
     CreateEventModal,
-    DetailsModal  
+    DetailsModal,
+    MapViewPage,
+    MyEventsPage  
   ],
   imports: [
     IonicModule.forRoot(MyApp), 
     BrowserModule,
     MomentModule,
-    AccountsModule
+    AccountsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBvz0J5z_nwuHGrdVMkHsvbMdvwnr2CesI',
+      libraries: ["places"]
+    }),
+    FormsModule,
+    ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ChatsPage,
+    ListViewPage,
     CreateEventModal,
-    DetailsModal
+    DetailsModal,
+    MapViewPage,
+    MyEventsPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler }
@@ -48,5 +52,3 @@ import { AccountsModule } from 'angular2-meteor-accounts-ui';
 export class AppModule {
   constructor(){}
 }
-
-//Angular2SocialLoginModule.loadProvidersScripts(providers);
