@@ -37,8 +37,10 @@ export class DetailsModal {
       {_id: eventId},
       {$inc: {'favorites':1}}
       );
-
-    this.dismiss();
+    let tempEvent = Events.findOne({_id: eventId});
+    let data = {"data" : "favorite",
+                "title": tempEvent.title};
+    this.dismiss(data);
   }
 
   //method to "unfavorite" an event from the detailed view modal
@@ -49,7 +51,10 @@ export class DetailsModal {
       {_id: _eventId},
       {$inc: {'favorites':-1}}
       );
-    this.dismiss();
+    let tempEvent = Events.findOne({_id: _eventId});
+    let data = {"data" : "unfavorite",
+                "title" :tempEvent.title};
+    this.dismiss(data);
   }
 
   //method to determine whether or not the active user has already favorited the event
@@ -76,7 +81,7 @@ export class DetailsModal {
   }
 
   //method required to dismiss the modal
-  dismiss() {
-    this.viewCtrl.dismiss();
+  dismiss(data) {
+    this.viewCtrl.dismiss(data);
   }
 }

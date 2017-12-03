@@ -7,6 +7,8 @@ import { CreateEventModal } from '../pages/createEventModal/createEventModal';
 import { DetailsModal } from '../pages/detailsModal/detailsModal';
 import { MapViewPage } from '../pages/mapView/mapView';
 import { MyEventsPage } from '../pages/myEvents/myEvents';
+import { AboutPage } from '../pages/aboutView/aboutView';
+import { TimeAndPlaceExistsModal } from '../pages/timeAndPlaceExistsModal/timeAndPlaceExistsModal';
 import { BrowserModule } from '@angular/platform-browser';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { AccountsModule } from 'angular2-meteor-accounts-ui';
@@ -22,7 +24,9 @@ import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
     CreateEventModal,
     DetailsModal,
     MapViewPage,
-    MyEventsPage  
+    MyEventsPage,
+    TimeAndPlaceExistsModal,
+    AboutPage  
   ],
   imports: [
     IonicModule.forRoot(MyApp), 
@@ -43,7 +47,9 @@ import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
     CreateEventModal,
     DetailsModal,
     MapViewPage,
-    MyEventsPage
+    MyEventsPage,
+    TimeAndPlaceExistsModal,
+    AboutPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler }

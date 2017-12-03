@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-toolbar color="danger">
+      <ion-title>
+        <h1>Oops!</h1>
+      </ion-title>
+      <ion-buttons start>
+        <button ion-button (click)="dismiss()">
+          <span ion-text color="primary" showWhen="ios">Cancel</span>
+          <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-note>
+               <ion-item>
+                 <h1>It looks like someone has already created an event</h1>
+                 <h1>with the same time and location.</h1>
+                 <p>Consider revising your submission.</p>
+               </ion-item>
+    </ion-note>
+</ion-content>

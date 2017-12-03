@@ -69,23 +69,36 @@
 			          (dragEnd)="markerDragEnd(m, $event)">
 			          
 			        <sebm-google-map-info-window>
-			          <h1>{{m.label}}</h1>
-			          <hr/>
-			          <ul>
-						  <li>{{m.date | amCalendar }}</li>
-						  <li>{{m.description}}</li>
-					  </ul>
-					  
-      				  <div class="marker-favorites">
-      				  <button *ngIf="!isFavorite(m.id) && hasCurrentUser()" ion-button icon-only title="Favorite this event" (click)="favoriteEvent(m.id)">
-                      	<ion-icon name="md-star"></ion-icon>
-                      </button>
-
-                      <button *ngIf="isFavorite(m.id) && hasCurrentUser()" ion-button icon-only title="Unfavorite this event" class="blur-button" (click)="removeFavorite(m.id)">
-                    	<ion-icon name="md-star"></ion-icon>
-                      </button>
-      				  {{m.favorites}}
-      				  </div>	 
+			          
+			          <ion-list>
+			          	  <ion-list-header class="marker-title">{{m.label}} <hr/> </ion-list-header>
+						  <ion-item>
+						  	<ion-icon name="calendar" item-start></ion-icon>
+						  	<ion-note class="marker-body-text" item-end>
+						  		{{m.date | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a' }}
+						  	</ion-note>
+						  </ion-item>
+						  <hr/>
+						  <ion-item>
+						  	<ion-icon name="information-circle" item-start></ion-icon>
+						  	<ion-note class="marker-body-text" item-end>
+						  		{{m.description}}
+						  	</ion-note>
+						  </ion-item>
+						  <hr/>
+						  <ion-item>
+						  	<ion-icon name="md-star" item-start></ion-icon>
+						  	<ion-note class="marker-body-text" item-end>
+						  		{{m.favorites}}
+						  	</ion-note>
+						  </ion-item>
+						  <hr/>
+						  <ion-item>
+        					<ion-icon class="marker-details" name="clipboard" title="Details" (click)="openDetails(m.id)" item-start></ion-icon>
+      						<ion-note item-end></ion-note>
+						  </ion-item>
+					  </ion-list>
+					   
 			        </sebm-google-map-info-window>
 			        
 			      </sebm-google-map-marker>

@@ -32,19 +32,25 @@
         				<ion-icon name="md-star"></ion-icon>
       				</button>
 		      	</div>
-		      	
 		        <img class="chat-picture" [src]="event.picture">
 		        <div class="chat-info">
 		          <h2 class="chat-title">{{event.title}}</h2>
 		 
 		          <span class="last-message">
 		            <p class="last-message-content last-message-content-text">{{event.description}}</p>
-		            <span class="last-message-content last-message-content-text">{{ event.createdAt | amCalendar }}</span>
+		            <span class="last-message-content last-message-content-text">{{ event.createdAt | amCalendar:referenceTime:formats }}</span>
 		          </span>
 		        </div>
 		      </button>
 		      <ion-item-options class="chat-options">
-		        <button ion-button color="danger" class="option option-remove" (click)="removeChat(event)">Remove</button>
+		      	<button ion-button color="secondary" class="option option-remove" (click)="openEditEvent(event._id)">
+		      		<ion-icon name="md-settings"></ion-icon>
+		      		Edit
+		      	</button>
+		        <button ion-button color="danger" class="option option-remove" (click)="removeChat(event)">
+		        	<ion-icon name="trash"></ion-icon>
+		        	Delete
+		    	</button>
 		      </ion-item-options>
 		    </ion-item-sliding>
 		  </ion-list>

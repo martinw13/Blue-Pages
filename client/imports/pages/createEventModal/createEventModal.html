@@ -1,7 +1,10 @@
   <ion-header>
     <ion-toolbar>
-      <ion-title>
+      <ion-title *ngIf="!edit">
         <h1>Create an Event</h1>
+      </ion-title>
+      <ion-title *ngIf="edit">
+        <h1>Edit your Event</h1>
       </ion-title>
       <ion-buttons start>
         <button ion-button (click)="dismiss()">
@@ -14,28 +17,72 @@
 
   <ion-content>
     <ion-note>
-             <form (ngSubmit)="createEvent()">
+             <form [formGroup]="authEvent" (ngSubmit)="createEvent(authEvent.value)">
                 <ion-item>
                   <ion-label>Event Title</ion-label>
-                  <ion-input type="text" [(ngModel)]="newEvent.title" name="title"></ion-input>
+                  <ion-input *ngIf="!edit" type="text" formControlName="title" name="title" required></ion-input>
+                  <ion-input *ngIf="edit" type="text" formControlName="title" name="title" value="{{editEvent.title}}" required></ion-input>
                 </ion-item>
+                <ion-item *ngIf="authEvent.controls.title.hasError('required')&&authEvent.controls.title.touched">
+                  <p>Title is required</p>
+                </ion-item>
+                <ion-item *ngIf="authEvent.controls.title.hasError('pattern')&&authEvent.controls.title.touched">
+                  <p>Title can only contain letters and numbers</p>
+                </ion-item>
+                <ion-item *ngIf="authEvent.controls.title.hasError('maxlength')&&authEvent.controls.title.touched">
+                  <p>Title has a maximum length of 30</p>
+                </ion-item>
+                <ion-item *ngIf="authEvent.controls.title.hasError('minlength')&&authEvent.controls.title.touched">
+                  <p>Title has a minimum length of 2</p>
+                </ion-item>
+                <ion-item *ngIf="authEvent.controls.title.hasError('exists')&&authEvent.controls.title.touched&&!edit">
+                  <p>An event already exists with this title</p>
+                </ion-item>
+
                 <ion-item>
                   <ion-label>Address</ion-label>
-                  <ion-input type="text" [(ngModel)]="newEvent.address" name="address"></ion-input>
+                  <ion-input *ngIf="!edit" type="text" formControlName="address" name="address" required></ion-input>
+                  <ion-input *ngIf="edit" type="text" formControlName="address" name="address" value="{{editEvent.address}}" required></ion-input>
                 </ion-item>
+                <ion-item *ngIf="authEvent.controls.address.hasError('required')&&authEvent.controls.address.touched">
+                  <p>Address is required</p>
+                </ion-item>
+                <ion-item *ngIf="authEvent.controls.address.hasError('pattern')&&authEvent.controls.address.touched">
+                  <p>Address can only contain letters and numbers</p>
+                </ion-item>
+                <ion-item *ngIf="authEvent.controls.address.hasError('minlength')&&authEvent.controls.address.touched">
+                  <p>Address has a minimum length of 10</p>
+                </ion-item>
+
                 <ion-item>
                   <ion-label>Description</ion-label>
-                  <ion-textarea [(ngModel)]="newEvent.description" name="description"></ion-textarea>
+                  <ion-textarea *ngIf="!edit" formControlName="description" name="description" required></ion-textarea>
+                  <ion-textarea *ngIf="edit" formControlName="description" name="description" value="{{editEvent.description}}" required></ion-textarea>
                 </ion-item>
+                <ion-item *ngIf="authEvent.controls.description.hasError('required')&&authEvent.controls.description.touched">
+                  <p>Description is required</p>
+                </ion-item>
+
                 <ion-item>
                   <ion-label>Picture</ion-label>
-                  <ion-input type="text" [(ngModel)]="newEvent.picture" name="picture"></ion-input>
+                  <ion-input *ngIf="!edit" type="text" formControlName="picture" name="picture"></ion-input>
+                  <ion-input *ngIf="edit" type="text" formControlName="picture" name="picture" value="{{editEvent.picture}}"></ion-input>
                 </ion-item>
+                <ion-item *ngIf="authEvent.controls.picture.hasError('required')&&authEvent.controls.picture.touched">
+                  <p>Picture is required</p>
+                </ion-item>
+
                 <ion-item>
                   <ion-label>Date</ion-label>
-                  <ion-input type="text" [(ngModel)]="newEvent.date" name="date"></ion-input>
+                  <ion-input *ngIf="!edit" type="datetime-local" formControlName="date" name="date" required></ion-input>
+                  <ion-input *ngIf="edit" type="datetime-local" formControlName="date" name="date" value="{{editEvent.createdAt | amDateFormat:'YYYY-MM-DDThh:mm'}}" required></ion-input>
                 </ion-item>
-                <button ion-button type="submit" block (click)="dismiss()">Create</button>
+                <ion-item *ngIf="authEvent.controls.date.hasError('required')&&authEvent.controls.date.touched">
+                  <p>Date is required</p>
+                </ion-item>
+
+                <button *ngIf="!edit" ion-button type="submit" block [disabled]="!authEvent.valid">Create</button>
+                <button *ngIf="edit" ion-button type="submit" block [disabled]="!authEvent.valid">Update</button>
             </form>
     </ion-note>
   </ion-content>

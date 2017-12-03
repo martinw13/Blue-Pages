@@ -72,9 +72,98 @@
   }
 
 .blur-button{
-  opacity: 0.2;
+  background-color: grey !important; 
+  color: #ffe500 !important;
+}
+
+.blur-button:hover{
+  animation: fillblue 2s;
+  animation-fill-mode: forwards;
+  -webkit-animation: fillblue 2s;  /* Safari 4.0 - 8.0 */
+  -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
 }
 
 .map-view-hover{
   cursor: pointer;
+}
+
+.favorite-hover:hover{
+  animation: fillgold 2s;
+  animation-fill-mode: forwards;
+  -webkit-animation: fillgold 2s;  /* Safari 4.0 - 8.0 */
+  -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+}
+
+@keyframes fillgold {
+    from {}
+    to {background-color: grey; color: #ffe500;}
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes fillgold {
+    from {}
+    to {background-color: grey; color: #ffe500;}
+}
+
+@keyframes fillblue {
+    from {}
+    to {background-color: #488aff; color: white;}
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes fillblue {
+    from {}
+    to {background-color: #488aff; color: white;}
+}
+
+.slide-image-1 {
+    max-height: 50% !important;
+    max-width: 60% !important;
+    margin: 18px 0;
+    margin-left: 22%;
+    margin-bottom: 12%;
+}
+
+.slide-image-2 {
+    max-height: 50% !important;
+    max-width: 60% !important;
+    margin: 18px 0;
+    margin-left: 20%;
+}
+
+.slide-image-3 {
+    max-height: 50% !important;
+    max-width: 80% !important;
+    margin: 18px 0;
+    margin-left: 10%;
+    margin-bottom: 25%;
+}
+
+.slide-image-4 {
+    max-height: 50% !important;
+    max-width: 69% !important;
+    margin: 18px 0;
+    margin-top: -3%;
+    margin-bottom: 4%;
+    margin-left: 15%;
+    border: 9px lightgrey;
+    border-style: solid;
+}
+
+.slide-title {
+  font-weight: bold !important;
+}
+
+.about-text-1{
+  padding: 0 40px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #60646B;
+  margin-bottom: 5% !important;
+}
+
+.about-card{
+    height: 75vh;
+    width: 100vh !important;
+    margin-left: 25% !important;
 }

@@ -26,7 +26,7 @@
                  <ion-label>{{event.favorites}} favorites
                     <div class="favorites-style-button">
 
-                    <button *ngIf="!isFavorite(event._id) && hasCurrentUser()" ion-button icon-only title="Favorite this event" (click)="favoriteEvent(event._id)">
+                    <button *ngIf="!isFavorite(event._id) && hasCurrentUser()" ion-button icon-only title="Favorite this event" class="favorite-hover" (click)="favoriteEvent(event._id)">
                       <ion-icon name="md-star"></ion-icon>
                     </button>
 
@@ -39,7 +39,7 @@
                  
               </ion-item>
               <ion-item>
-                <ion-label>{{ event.createdAt | amCalendar }}</ion-label>
+                <ion-label>{{ event.createdAt | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a' }}</ion-label>
               </ion-item>
               <ion-item *ngIf="event.createdBy">
                 <ion-label>Contact: {{event.createdBy}}</ion-label>

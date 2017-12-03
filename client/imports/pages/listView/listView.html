@@ -4,6 +4,9 @@
       The Blue Pages
     </ion-title>
     <ion-buttons end>
+      <button ion-button icon-only class="my-events-button" title="About" (click)="openAbout()">
+        <ion-icon name="map"></ion-icon>
+      </button>
 
       <button *ngIf="hasCurrentUser()" ion-button icon-only class="my-events-button" title="My Events" (click)="openMyEvents()">
         <ion-icon name="person"></ion-icon>
@@ -46,7 +49,7 @@
 		 
 		          <span class="last-message">
 		            <p class="last-message-content last-message-content-text">{{event.description}}</p>
-		            <span class="last-message-content last-message-content-text">{{ event.createdAt | amCalendar }}</span>
+		            <span class="last-message-content last-message-content-text">{{ event.createdAt | amCalendar:referenceTime:formats }}</span>
 		          </span>
 		        </div>
 		      </button>
