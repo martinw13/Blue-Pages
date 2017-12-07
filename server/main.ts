@@ -12,21 +12,21 @@ Meteor.startup(() => {
     let eventId;
  
     eventId = Events.collection.insert({
-      title: 'Russell Peters Stand Up',
-      address: '30 2nd St, Troy, NY 12180',
+      title: 'One For The Team',
+      address: '105 Wolf Rd, Albany, NY 12205',
       favorites: 33,
-      description: 'Russell Peters will perform a stand comedy show in Troy this weekend. Buy tickets from our website',
-      picture: 'http://images.indianexpress.com/2014/12/russell-peters-759.jpg',
-      createdAt: Moment().add(1, 'weeks').toDate()
+      description: 'Show your team spirit by joining us for a fundraiser to support RPI Racquetball Club. Tell the cashier you\'re supporting the cause to make sure that 50% of the proceeds go to RPI Racquetball Club.',
+      picture: 'https://drpma142ptgxf.cloudfront.net/assets/logo.svg',
+      createdAt: Moment('12/6/2017 4:00 pm').toDate()
     });
  
     eventId = Events.collection.insert({
-      title: 'The Low Beat',
-      address: '42 Howard St, Albany, NY 12207',
+      title: 'The 2017 President\'s Holiday Concert',
+      address: '44 8th St, Troy, NY 12180',
       favorites: 99,
-      description: 'We are hosting an event a with live music. Happy Hour 4-7 pm and no RSVP needed',      
-      picture: 'http://www.nippertown.com/zeblog/wp-content/uploads/2014/01/TheLowBeat.jpg',
-      createdAt: Moment().add(1, 'months').toDate()
+      description: 'The annual event, a Rensselaer tradition, features performances by the Rensselaer Orchestra under the direction of Arts Lecturer Nicholas DeMaison.  RSVP at: https://webforms.rpi.edu/holiday-concert',      
+      picture: 'https://2.bp.blogspot.com/-uobOf2n0E6M/Vvqde5qFjvI/AAAAAAAABLQ/RoY1vZe6whMyu4Vk3v2i_lN4fWQv1yEfQ/s1600/Screen%2BShot%2B2016-03-29%2Bat%2B11.17.05%2BAM.png',
+      createdAt: Moment('12/10/2017 3:00 pm').toDate()
     });
   
     eventId = Events.collection.insert({
@@ -35,25 +35,25 @@ Meteor.startup(() => {
       favorites: 77,
       description: 'The Troy Waterfront Farmers Market is delighted to bring you nearly 100 local farmers and fresh food vendors every Saturday, year-round in Downtown Troy, New York. For over 18 years, we have been a leader in supporting local agribusiness and providing a livelihood to farmers and food producers in and around the Capital Region.',
       picture: 'http://homegrowngreat.com/wp-content/uploads/2016/04/Troy-Farmers-Market-2016_fb-profile.jpg',
-      createdAt: Moment().subtract(2, 'weeks').toDate()
+      createdAt: Moment('12/9/2017 7:00 am').toDate()
     });
  
     eventId = Events.collection.insert({
-      title: 'Relay 4 Life',
-      favorites: 44,
-      address: '335 East Big Beaver Road, Troy, MI',
-      description: 'Join us for our first ever Cyclebar Fundraiser to benefit the American Cancer Society and the Relay For Life of Troy',      
-      picture: 'https://www.ucumberlands.edu/sites/default/files/styles/large/public/field/image/relay4life.png?itok=dojFtyZR',
-      createdAt: Moment().subtract(1, 'days').toDate()
+      title: 'Moe\'s Monday',
+      favorites: 110,
+      address: '1527 15th St, Troy, NY 12180',
+      description: 'Moe\'s Monday..Get a buritto, drink, chips and salsa all for $6.99 plus tax. What a great way to start the week! Please note Moe Monday is not eligible for any other offers or discounts.',      
+      picture: 'http://www.wrns.com/wp-content/uploads/2017/01/moes-southwest-grill.jpg',
+      createdAt: Moment('12/11/2017 11:00 am').toDate()
     });
  
     eventId = Events.collection.insert({
-      title: 'Halloween costume contest',
-      address: '110 8th St, Troy, NY 12180',
+      title: 'Open Mic Night',
+      address: '46 3rd St, Troy, NY 12180',
       favorites: 64,
-      description: 'Enter our 2017 Halloween Costume Contest to show off your talent and for a chance to win cash prizes!| Tickets Available for Purchase',
-      picture: 'http://i3.mirror.co.uk/incoming/article6752443.ece/ALTERNATES/s615/Lit-jack-o-lanterns-close-up.jpg',
-      createdAt: Moment().subtract(2, 'weeks').toDate()
+      description: 'Come show us what you got on the stage!  Open mic night at the Daily Grind. No RSVP required!',
+      picture: 'https://res.cloudinary.com/grubhub/image/upload/w_400,h_300,f_auto,fl_lossy,q_80,c_fit/hslevqagv6d4ohouzliz',
+      createdAt: Moment('1/8/2018 8:00 pm').toDate()
     });
   }
   
