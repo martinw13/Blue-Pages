@@ -44,7 +44,7 @@
  
   .chat-info {
     float: left;
-    margin: 10px 0 0 140px;
+    margin: 0 0 0 140px !important;
     width:100px;
     word-wrap:break-word;
     display:inline-block      
@@ -58,6 +58,15 @@
     }
 
   }
+
+  .chat-title{
+    font-size: 1.7rem !important;
+    font-weight: 400 !important;
+  }
+
+  .chat-time{
+  font-size: 1.25rem !important;
+  }
 }
 .login-style .content-container{
   padding: 20px 12px !important;
@@ -65,6 +74,10 @@
   margin-top: 0px !important;
   height: inherit !important;
   margin-right: inherit !important;
+}
+
+.login-style{
+  vertical-align: -webkit-baseline-middle !important;
 }
 
 .my-events-button{
@@ -166,4 +179,16 @@
     height: 75vh;
     width: 100vh !important;
     margin-left: 25% !important;
+}
+
+.dropdown-toggle{
+  color:white;
+}
+
+.accounts-close{
+  margin-right: 7px;
+}
+
+.bar-button-md[icon-only] {
+  margin-right: 8px;
 }

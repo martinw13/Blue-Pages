@@ -17,6 +17,10 @@
     position: absolute !important;
     z-index: 1 !important;
     width: 20% !important;
+    margin: 10px 0px 0px 10px;
+    border-radius: 2px;
+    border-style: none;
+    height: 24px;
 }
 
 .marker-body-text{
@@ -53,4 +57,16 @@
 @-webkit-keyframes fillgrey {
     from {}
     to {background-color: black; color: white;}
+}
+
+.dropdown-toggle{
+  color:white;
+}
+
+.accounts-close{
+  margin-right: 7px;
+}
+
+.bar-button-md[icon-only] {
+  margin-right: 8px;
 }
