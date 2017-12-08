@@ -14,13 +14,15 @@
 }
 
 .location-search{
-    position: absolute !important;
-    z-index: 1 !important;
-    width: 20% !important;
-    margin: 10px 0px 0px 10px;
-    border-radius: 2px;
-    border-style: none;
-    height: 24px;
+  padding-left: 6px;
+  padding-right: 6px;
+  position: absolute !important;
+  z-index: 1 !important;
+  width: 20% !important;
+  margin: 10px 0px 0px 10px;
+  border-radius: 1.5px;
+  border-style: none;
+  height: 24px;
 }
 
 .marker-body-text{
@@ -30,7 +32,7 @@
 .marker-title{
   color: #4286f4 !important;
   font-weight: bolder !important;
-   font-size: x-large !important;
+  font-size: x-large !important;
 }
 
 .marker-details{
@@ -69,4 +71,8 @@
 
 .bar-button-md[icon-only] {
   margin-right: 8px;
+}
+
+.toolbar-content{
+  padding-left: 10px;
 }

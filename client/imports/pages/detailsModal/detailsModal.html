@@ -14,16 +14,22 @@
   <ion-content>
     <ion-note>
                <ion-item>
-                 <ion-label>{{event.title}}</ion-label>
+                 <ion-label class="event-title">{{event.title}}</ion-label>
                </ion-item>
                <ion-item>
-                 <ion-label>{{event.address}}</ion-label>
+                 <ion-label class="event-address">{{event.address}}</ion-label>
                </ion-item>
-               <ion-item text-wrap>
+               <ion-item class="event-description" text-wrap>
                  {{event.description}}
                </ion-item>
+              <ion-item>
+                <ion-label class="event-time">{{ event.createdAt | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a' }}</ion-label>
+              </ion-item>
+              <ion-item class="event-contact" *ngIf="event.createdBy">
+                <ion-label>Contact: {{event.createdBy}}</ion-label>
+              </ion-item>
                <ion-item>
-                 <ion-label>{{event.favorites}} favorites
+                 <ion-label class="event-favorite">{{event.favorites}} favorites
                     <div class="favorites-style-button">
 
                     <button *ngIf="!isFavorite(event._id) && hasCurrentUser()" ion-button icon-only title="Favorite this event" class="favorite-hover" (click)="favoriteEvent(event._id)">
@@ -37,12 +43,6 @@
                     </div>
                  </ion-label>
                  
-              </ion-item>
-              <ion-item>
-                <ion-label>{{ event.createdAt | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a' }}</ion-label>
-              </ion-item>
-              <ion-item *ngIf="event.createdBy">
-                <ion-label>Contact: {{event.createdBy}}</ion-label>
               </ion-item>
     </ion-note>
   </ion-content>
